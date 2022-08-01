@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
-from ne8000 import HuaweiGenerator
-from perfiles import perfiles
+if __name__ == '__main__':
+    from huaweibng import HuaweiConfig
 
-hbng = HuaweiGenerator()
+    hbng = HuaweiConfig()
 
-for perfil in perfiles:
-    hbng.QoSProfile(perfil['nombre'], perfil['download'], perfil['upload'], perfil['unidad'])
+    for perfil in hbng.GetProfiles():
+        hbng.HuaweiQoSProfile(perfil['nombre'], perfil['download'], perfil['upload'], perfil['unidad'])
+
+    hbng.GetSQLQoSProfiles()
