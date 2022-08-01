@@ -1,14 +1,21 @@
 # BNG-HUAWEI
 
-Scripts que armé para configurar BNGs Huawei con la plataforma NE40/NE8000.
+Simple scripts written for helping me to configure Huaweis BNGs NE40/NE8000.
 
-## Instalación
+## Installation
 
 ```bash
-git clone git@github.com:aweher/bng-huawei.git
+git clone https://github.com/aweher/bng-huawei.git
 
 cd bng-huawei/
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+cp perfiles.yaml.example perfiles.yaml
+```
+
+Then you must edit `perfiles.yaml` before running the `main.py` script.
+
+```bash
+python3 main.py
 ```
