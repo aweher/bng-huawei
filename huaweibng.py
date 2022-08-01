@@ -53,3 +53,5 @@ class HuaweiConfig(object):
 
         for profile in self.profile_names:
             self.term.Green(f"INSERT INTO radgroupreply (GroupName, Attribute, Op, Value) VALUES ('{profile}', 'Huawei-Qos-Profile-Name', ':=', '{profile}');")
+        
+        print(f'\n{len(self.profile_names)} INSERTs generados\n')

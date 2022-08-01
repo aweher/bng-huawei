@@ -7,5 +7,7 @@ if __name__ == '__main__':
 
     for perfil in hbng.GetProfiles():
         hbng.HuaweiQoSProfile(perfil['nombre'], perfil['download'], perfil['upload'], perfil['unidad'])
+    
+    print(f'{len(hbng.GetProfiles())} perfiles generados \n')
 
     hbng.GetSQLQoSProfiles()
