@@ -2,8 +2,10 @@
 import os
 import yaml
 import re
+from termtools import TerminalTools as TT
 class HuaweiConfig(object):
     def __init__(self):
+        self.term = TT()
         with open('perfiles.yaml', 'r') as f:
             self.config = yaml.safe_load(f)
             self.profiles = []
@@ -17,8 +19,7 @@ class HuaweiConfig(object):
     def GetProfiles(self):
         return self.profiles
     
-    @staticmethod
-    def HuaweiQoSProfile(nombre, download, upload, unidad):
+    def HuaweiQoSProfile(self, nombre, download, upload, unidad):
         """
         Genera los profiles de QoS en Huawei para aplicar a los clientes
         """
@@ -40,9 +41,9 @@ class HuaweiConfig(object):
         pir_download = int(cir_download * multiplicador_pir_download)
         pir_upload = int(cir_upload * multiplicador_pir_upload)
         
-        print(f'qos-profile {nombre}')
-        print(f' car cir {cir_download} pir {pir_download} green pass yellow pass red discard outbound')
-        print(f' car cir {cir_upload} pir {pir_upload} green pass yellow pass red discard inbound')
+        self.term.Red(f'qos-profile {nombre}')
+        self.term.Yellow(f' car cir {cir_download} pir {pir_download} green pass yellow pass red discard outbound')
+        self.term.Yellow(f' car cir {cir_upload} pir {pir_upload} green pass yellow pass red discard inbound')
         print()
     
     def GetSQLQoSProfiles(self):
@@ -51,4 +52,4 @@ class HuaweiConfig(object):
         """
 
         for profile in self.profile_names:
-            print(f"INSERT INTO radgroupreply (GroupName, Attribute, Op, Value) VALUES ('{profile}', 'Huawei-Qos-Profile-Name', ':=', '{profile}');")
+            self.term.Green(f"INSERT INTO radgroupreply (GroupName, Attribute, Op, Value) VALUES ('{profile}', 'Huawei-Qos-Profile-Name', ':=', '{profile}');")
