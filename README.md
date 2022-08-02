@@ -19,3 +19,7 @@ Then you must edit `perfiles.yaml` before running the `main.py` script.
 ```bash
 python3 main.py
 ```
+
+## ASCIICast
+
+[![asciicast](https://asciinema.org/a/DijAxtzzgSbNQPIb8DtjG04Nc.svg)](https://asciinema.org/a/DijAxtzzgSbNQPIb8DtjG04Nc)
